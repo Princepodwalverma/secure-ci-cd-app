@@ -28,7 +28,7 @@ jobs:
       # SonarCloud SAST
       # -------------------------
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
+        uses: SonarSource/sonarcloud-github-action@v2   # Later replace with commit SHA
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
@@ -41,7 +41,7 @@ jobs:
       # Trivy Filesystem Scan
       # -------------------------
       - name: Trivy FS Scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.20.0
         with:
           scan-type: fs
           severity: HIGH,CRITICAL
@@ -57,7 +57,7 @@ jobs:
       # Trivy Image Scan
       # -------------------------
       - name: Trivy Image Scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.20.0
         with:
           image-ref: secure-app:latest
           severity: HIGH,CRITICAL
