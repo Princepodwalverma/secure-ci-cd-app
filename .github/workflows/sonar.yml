@@ -1,0 +1,21 @@
+name: SonarCloud Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
+          organization: princepodwalverma
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
